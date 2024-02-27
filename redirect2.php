@@ -2,11 +2,18 @@
 <html>
 <body>
 
-<?php 
-$goto = $_GET["loc"];
+<?php require_once 'header.php'; ?>
 
-$loc_head = "Location: " . $goto;
-header($loc_head); 
+<?php 
+$goto = "";
+if(isset($_GET["loc"])){
+    $goto = $_GET["loc"];
+}
+
+if(isInternalURL($goto)){
+    $loc_head = "Location: " . $goto;
+    header($loc_head); 
+}
 ?>
 
 </body>
